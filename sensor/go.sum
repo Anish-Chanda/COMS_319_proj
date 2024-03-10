@@ -1,3 +1,5 @@
+github.com/MichaelS11/go-dht v0.1.1 h1:v49o+q9BBCPN6L8cdL9VoKuCwZcUMQFsLB3GqPIjeSk=
+github.com/MichaelS11/go-dht v0.1.1/go.mod h1:NTx2rUi8kfs8Qk9Fotoyf/3lQnKBdc2mhyZqO4AhVLI=
 github.com/d2r2/go-dht v0.0.0-20200119175940-4ba96621a218 h1:z3u7ZAkBvqHD2zaECn0qd1BwMCTiAYcQjFdU8vflVHo=
 github.com/d2r2/go-dht v0.0.0-20200119175940-4ba96621a218/go.mod h1:AzSqP4S4/6pINOKg3VC79WC7YY3zskQcrXMFzphCry0=
 github.com/d2r2/go-logger v0.0.0-20210606094344-60e9d1233e22 h1:nO+SY4KOMsF/LsZ5EtbSKhiT3M6sv/igo2PEru/xEHI=
@@ -6,3 +8,7 @@ github.com/d2r2/go-shell v0.0.0-20211022052110-f591c27e3e2e h1:6rbw4kecquuE5mELv
 github.com/d2r2/go-shell v0.0.0-20211022052110-f591c27e3e2e/go.mod h1:yqtlOXB0bWzWgM4wZ9BdZ75OmXSiFYSKrZ3TZlPaePQ=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
+periph.io/x/conn/v3 v3.7.0 h1:f1EXLn4pkf7AEWwkol2gilCNZ0ElY+bxS4WE2PQXfrA=
+periph.io/x/conn/v3 v3.7.0/go.mod h1:ypY7UVxgDbP9PJGwFSVelRRagxyXYfttVh7hJZUHEhg=
+periph.io/x/host/v3 v3.8.2 h1:ayKUDzgUCN0g8+/xM9GTkWaOBhSLVcVHGTfjAOi8OsQ=
+periph.io/x/host/v3 v3.8.2/go.mod h1:yFL76AesNHR68PboofSWYaQTKmvPXsQH2Apvp/ls/K4=
