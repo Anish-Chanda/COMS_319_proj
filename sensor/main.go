@@ -22,7 +22,7 @@ func main() {
 		return
 	}
 
-	humidity, temperature, readerr := dht.Read()
+	humidity, temperature, readerr := dht.ReadRetry(11)
 
 	if readerr != nil {
 		fmt.Println("Reader error:", readerr)
