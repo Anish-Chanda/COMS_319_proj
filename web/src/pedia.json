@@ -1,0 +1,482 @@
+[
+    {
+      "name": "Snake Plant",
+      "scientific_name": "Sansevieria trifasciata",
+      "soil_mix": "Well-draining potting mix",
+      "flowers": "Rarely blooms indoors",
+      "fruits": "Non-edible",
+      "zone": "9-11",
+      "sunlight": "Indirect light to low light",
+      "type": "Houseplant"
+    },
+    {
+      "name": "Peace Lily",
+      "scientific_name": "Spathiphyllum wallisii",
+      "soil_mix": "Moist, well-draining potting mix",
+      "flowers": "White",
+      "fruits": "Non-edible",
+      "zone": "11-12",
+      "sunlight": "Indirect light to low light",
+      "type": "Houseplant"
+  
+    },
+    {
+      "name": "Aloe Vera",
+      "scientific_name": "Aloe barbadensis",
+      "soil_mix": "Sandy, well-draining soil",
+      "flowers": "Yellow-orange",
+      "fruits": "Non-edible",
+      "zone": "9-11",
+      "sunlight": "Bright, indirect light",
+      "type": "Houseplant"
+    },
+    {
+      "name": "Spider Plant",
+      "scientific_name": "Chlorophytum comosum",
+      "soil_mix": "Well-draining potting mix",
+      "flowers": "Small white flowers",
+      "fruits": "Non-edible",
+      "zone": "9-11",
+      "sunlight": "Indirect light to bright light",
+      "type": "Houseplant"
+    },
+    {
+      "name": "Jade Plant",
+      "scientific_name": "Crassula ovata",
+      "soil_mix": "Well-draining cactus mix",
+      "flowers": "Pink or white",
+      "fruits": "Non-edible",
+      "zone": "10-12",
+      "sunlight": "Bright, indirect light",
+      "type": "Houseplant"
+    },
+    {
+      "name": "English Ivy",
+      "scientific_name": "Hedera helix",
+      "soil_mix": "Well-draining potting mix",
+      "flowers": "Greenish-yellow",
+      "fruits": "Non-edible",
+      "zone": "4-9",
+      "sunlight": "Indirect light to partial shade",
+      "type": "Houseplant"
+    },
+    {
+      "name": "ZZ Plant",
+      "scientific_name": "Zamioculcas zamiifolia",
+      "soil_mix": "Well-draining potting mix",
+      "flowers": "Rarely blooms indoors",
+      "fruits": "Non-edible",
+      "zone": "9-11",
+      "sunlight": "Low light to indirect light",
+      "type": "Houseplant"
+    },
+    {
+      "name": "Lavender",
+      "scientific_name": "Lavandula angustifolia",
+      "soil_mix": "Well-draining, alkaline soil",
+      "flowers": "Lavender to purple",
+      "fruits": "Non-edible",
+      "zone": "5-9",
+      "sunlight": "Full sun",
+      "type": "Houseplant"
+    },
+    {
+      "name": "Succulent Echeveria",
+      "scientific_name": "Echeveria spp.",
+      "soil_mix": "Well-draining cactus mix",
+      "flowers": "Pink, orange, red, yellow",
+      "fruits": "Non-edible",
+      "zone": "Varies by species",
+      "sunlight": "Bright, indirect light",
+      "type": "Houseplant"
+    },
+    {
+      "name": "Rubber Plant",
+      "scientific_name": "Ficus elastica",
+      "soil_mix": "Well-draining potting mix",
+      "flowers": "Insignificant indoors",
+      "fruits": "Non-edible",
+      "zone": "10-12",
+      "sunlight": "Indirect light to bright light",
+      "type": "Houseplant"
+    },
+    {
+      "name": "Fiddle Leaf Fig",
+      "scientific_name": "Ficus lyrata",
+      "soil_mix": "Well-draining potting mix",
+      "flowers": "Rarely flowers indoors",
+      "fruits": "Non-edible",
+      "zone": "10-12",
+      "sunlight": "Bright, indirect light",
+      "type": "Houseplant"
+    },
+    {
+      "name": "Bamboo Palm",
+      "scientific_name": "Chamaedorea seifrizii",
+      "soil_mix": "Moist, well-draining potting mix",
+      "flowers": "Small white flowers",
+      "fruits": "Non-edible",
+      "zone": "10-12",
+      "sunlight": "Indirect light to low light",
+      "type": "Houseplant"
+    },
+    {
+      "name": "Chinese Money Plant",
+      "scientific_name": "Pilea peperomioides",
+      "soil_mix": "Well-draining potting mix",
+      "flowers": "Insignificant indoors",
+      "fruits": "Non-edible",
+      "zone": "10-12",
+      "sunlight": "Indirect light to moderate light",
+      "type": "Houseplant"
+    },
+    {
+      "name": "String of Pearls",
+      "scientific_name": "Senecio rowleyanus",
+      "soil_mix": "Well-draining cactus mix",
+      "flowers": "Small white flowers",
+      "fruits": "Non-edible",
+      "zone": "9-11",
+      "sunlight": "Bright, indirect light",
+      "type": "Houseplant"
+    },
+    {
+      "name": "Boston Fern",
+      "scientific_name": "Nephrolepis exaltata",
+      "soil_mix": "Moist, well-draining potting mix",
+      "flowers": "Insignificant indoors",
+      "fruits": "Non-edible",
+      "zone": "9-11",
+      "sunlight": "Indirect light to moderate light",
+      "type": "Houseplant"
+    },
+    {
+      "name": "Philodendron",
+      "scientific_name": "Philodendron spp.",
+      "soil_mix": "Well-draining potting mix",
+      "flowers": "Rarely flowers indoors",
+      "fruits": "Non-edible",
+      "zone": "9-11",
+      "sunlight": "Indirect light to moderate light",
+      "type": "Houseplant"
+    },
+    {
+      "name": "Swiss Cheese Plant",
+      "scientific_name": "Monstera deliciosa",
+      "soil_mix": "Well-draining potting mix",
+      "flowers": "Rarely flowers indoors",
+      "fruits": "Non-edible",
+      "zone": "10-12",
+      "sunlight": "Indirect light to moderate light",
+      "type": "Houseplant"
+    },
+    {
+        "name": "Bird of Paradise",
+        "scientific_name": "Strelitzia reginae",
+        "soil_mix": "Well-draining potting mix",
+        "flowers": "Orange and blue",
+        "fruits": "Non-edible",
+        "zone": "10-12",
+        "sunlight": "Bright, indirect light",
+        "type": "Houseplant"
+      },
+      {
+        "name": "Sago Palm",
+        "scientific_name": "Cycas revoluta",
+        "soil_mix": "Well-draining potting mix",
+        "flowers": "Cone-like structures",
+        "fruits": "Non-edible",
+        "zone": "9-11",
+        "sunlight": "Bright, indirect light",
+        "type": "Houseplant"
+      },
+      {
+        "name": "Peperomia",
+        "scientific_name": "Peperomia spp.",
+        "soil_mix": "Well-draining potting mix",
+        "flowers": "Insignificant indoors",
+        "fruits": "Non-edible",
+        "zone": "Varies by species",
+        "sunlight": "Indirect light to moderate light",
+        "type": "Houseplant"
+      },
+      {
+        "name": "Pothos",
+        "scientific_name": "Epipremnum aureum",
+        "soil_mix": "Well-draining potting mix",
+        "flowers": "Rarely blooms indoors",
+        "fruits": "Non-edible",
+        "zone": "10-12",
+        "sunlight": "Indirect light to low light",
+        "type": "Houseplant"
+      },
+      {
+        "name": "Calathea",
+        "scientific_name": "Calathea spp.",
+        "soil_mix": "Well-draining potting mix",
+        "flowers": "Insignificant indoors",
+        "fruits": "Non-edible",
+        "zone": "10-12",
+        "sunlight": "Indirect light to low light",
+        "type": "Houseplant"
+      },
+      {
+        "name": "Zebra Plant",
+        "scientific_name": "Aphelandra squarrosa",
+        "soil_mix": "Well-draining potting mix",
+        "flowers": "Yellow bracts with small white flowers",
+        "fruits": "Non-edible",
+        "zone": "10-12",
+        "sunlight": "Indirect light to low light",
+        "type": "Houseplant"
+      },
+      {
+        "name": "Christmas Cactus",
+        "scientific_name": "Schlumbergera bridgesii",
+        "soil_mix": "Well-draining potting mix",
+        "flowers": "Various colors including pink, red, orange, and white",
+        "fruits": "Non-edible",
+        "zone": "10-12",
+        "sunlight": "Indirect light to low light",
+        "type": "Houseplant"
+      },
+      {
+        "name": "Fern",
+        "scientific_name": "Nephrolepis spp.",
+        "soil_mix": "Moist, well-draining potting mix",
+        "flowers": "Insignificant indoors",
+        "fruits": "Non-edible",
+        "zone": "Varies by species",
+        "sunlight": "Indirect light to moderate light",
+        "type": "Houseplant"
+      },
+      {
+        "name": "African Violet",
+        "scientific_name": "Saintpaulia spp.",
+        "soil_mix": "Well-draining potting mix",
+        "flowers": "Various colors including purple, blue, pink, and white",
+        "fruits": "Non-edible",
+        "zone": "10-12",
+        "sunlight": "Indirect light to low light",
+        "type": "Houseplant"
+      },
+      {
+        "name": "Hoya",
+        "scientific_name": "Hoya spp.",
+        "soil_mix": "Well-draining potting mix",
+        "flowers": "Various colors including pink, red, and white",
+        "fruits": "Non-edible",
+        "zone": "Varies by species",
+        "sunlight": "Indirect light to moderate light",
+       "type": "Houseplant"
+      },
+      {
+        "name": "Dumb Cane",
+        "scientific_name": "Dieffenbachia spp.",
+        "soil_mix": "Well-draining potting mix",
+        "flowers": "Insignificant indoors",
+        "fruits": "Non-edible",
+        "zone": "10-12",
+        "sunlight": "Indirect light to moderate light",
+       "type": "Houseplant"
+      },
+      {
+        "name": "Lipstick Plant",
+        "scientific_name": "Aeschynanthus spp.",
+        "soil_mix": "Well-draining potting mix",
+        "flowers": "Red, tube-shaped flowers",
+        "fruits": "Non-edible",
+        "zone": "10-12",
+        "sunlight": "Indirect light to moderate light",
+       "type": "Houseplant"
+      },
+      {
+        "name": "Moth Orchid",
+        "scientific_name": "Phalaenopsis spp.",
+        "soil_mix": "Well-draining orchid mix",
+        "flowers": "Various colors including white, pink, purple, and yellow",
+        "fruits": "Non-edible",
+        "zone": "10-12",
+        "sunlight": "Indirect light to moderate light",
+       "type": "Houseplant"
+      },
+      {
+        "name": "Air Plant",
+        "scientific_name": "Tillandsia spp.",
+        "soil_mix": "No soil needed, absorbs nutrients through leaves",
+        "flowers": "Various colors including purple, pink, and red",
+        "fruits": "Non-edible",
+        "zone": "10-12",
+        "sunlight": "Indirect light to bright light",
+       "type": "Houseplant"
+      },
+      {
+        "name": "Flamingo Flower",
+        "scientific_name": "Anthurium spp.",
+        "soil_mix": "Well-draining potting mix",
+        "flowers": "Red, pink, or white spathes",
+        "fruits": "Non-edible",
+        "zone": "10-12",
+        "sunlight": "Indirect light to moderate light",
+       "type": "Houseplant"
+      },
+  
+      {
+        "name": "Begonia",
+        "scientific_name": "Begonia spp.",
+        "soil_mix": "Well-draining potting mix",
+        "flowers": "Various colors including pink, red, orange, and white",
+        "fruits": "Non-edible",
+        "zone": "Varies by species",
+        "sunlight": "Indirect light to moderate light",
+       "type": "Houseplant"
+      },
+      {
+        "name": "Pilea",
+        "scientific_name": "Pilea spp.",
+        "soil_mix": "Well-draining potting mix",
+        "flowers": "Insignificant indoors",
+        "fruits": "Non-edible",
+        "zone": "Varies by species",
+        "sunlight": "Indirect light to moderate light",
+       "type": "Houseplant"
+      },
+  
+  {
+    "name": "Roses",
+    "scientific_name": "Rosa spp.",
+    "soil_mix": "Well-draining soil rich in organic matter",
+    "flowers": "Various colors including red, pink, yellow, and white",
+    "fruits": "Edible rose hips (depending on variety)",
+    "zone": "Varies by species",
+    "sunlight": "Full sun",
+    "type": "perennial"
+  },
+    {
+      "name": "Marigolds",
+      "scientific_name": "Tagetes erecta",
+      "soil_mix": "Well-draining soil",
+      "flowers": "Various colors including yellow, orange, and red",
+      "zone": "2-11",
+      "sunlight": "Full sun",
+      "type": "Annual"
+    },
+    {
+      "name": "Zinnias",
+      "scientific_name": "Zinnia elegans",
+      "soil_mix": "Well-draining soil",
+      "flowers": "Various colors such as pink, red, orange, yellow, and white",
+      "zone": "2-11",
+      "sunlight": "Full sun",
+      "type": "Annual"
+    },
+    {
+      "name": "Cosmos",
+      "scientific_name": "Cosmos bipinnatus",
+      "soil_mix": "Well-draining soil",
+      "flowers": "Various colors including pink, white, and purple",
+      "zone": "2-11",
+      "sunlight": "Full sun",
+      "type": "Annual"
+    },
+  
+  {
+    "name": "Sunflowers",
+    "scientific_name": "Helianthus annuus",
+    "soil_mix": "Well-draining soil",
+    "flowers": "Bright yellow with dark centers",
+    "fruits": "Edible seeds",
+    "zone": "2-11",
+    "sunlight": "Full sun",
+    "type": "Annual"
+  },
+  
+  {
+    "name": "Lilies",
+    "scientific_name": "Lilium spp.",
+    "soil_mix": "Well-draining soil rich in organic matter",
+    "flowers": "Various colors including white, pink, orange, and red",
+    "fruits": "Non-edible",
+    "zone": "3-9",
+    "sunlight": "Full sun to part shade",
+    "type": "perennial"
+  },
+  
+  {
+    "name": "Hydrangeas",
+    "scientific_name": "Hydrangea spp.",
+    "soil_mix": "Moist, well-draining soil",
+    "flowers": "Blue, pink, white, or purple depending on soil acidity",
+    "fruits": "Non-edible",
+    "zone": "3-9",
+    "sunlight": "Part shade to full shade",
+    "type": "deciduous shrub"
+  },
+  {
+    "name": "Dahlias",
+    "scientific_name": "Dahlia spp.",
+    "soil_mix": "Well-draining soil",
+    "flowers": "Various colors and shapes",
+    "fruits": "Non-edible",
+    "zone": "7-11",
+    "sunlight": "Full sun",
+    "type": "tuberous perennial"
+  },
+  
+  {
+    "name": "Peonies",
+    "scientific_name": "Paeonia spp.",
+    "soil_mix": "Well-draining, fertile soil",
+    "flowers": "Various colors including white, pink, and red",
+    "fruits": "Non-edible",
+    "zone": "3-8",
+    "sunlight": "Full sun to part shade",
+    "type": "perennial"
+  },
+  
+  {
+    "name": "Hostas",
+    "scientific_name": "Hosta spp.",
+    "soil_mix": "Moist, well-draining soil",
+    "flowers": "White or purple spikes",
+    "fruits": "Non-edible",
+    "zone": "3-9",
+    "sunlight": "Part shade to full shade",
+    "type": "perennial"
+  },
+  {
+    "name": "Geraniums",
+    "scientific_name": "Pelargonium spp.",
+    "soil_mix": "Well-draining soil",
+    "flowers": "Various colors including red, pink, white, and purple",
+    "fruits": "Non-edible",
+    "zone": "Varies by species",
+    "sunlight": "Full sun to part shade",
+    "type": "perennial"
+  },
+  
+  {
+    "name": "Salvia",
+    "scientific_name": "Salvia spp.",
+    "soil_mix": "Well-draining soil",
+    "flowers": "Various colors including blue, purple, red, and white",
+    "fruits": "Non-edible",
+    "zone": "3-11",
+    "sunlight": "Full sun",
+    "type": "perennial"
+  },
+  
+  {
+    "name": "Ferns",
+    "scientific_name": "Filicophyta spp.",
+    "soil_mix": "Rich, well-draining soil",
+    "flowers": "Non-flowering",
+    "fruits": "Non-edible",
+    "zone": "Varies by species",
+    "sunlight": "Part shade to full shade",
+    "type": "perennial"
+  }
+    
+]
+    
+  

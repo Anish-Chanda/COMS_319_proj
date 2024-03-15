@@ -1,0 +1,56 @@
+body {
+  background-color: #2F575D;
+  color: #DEE1DD;
+}
+
+#plant-list {
+  display: grid;
+  gap: 5px;
+  margin-left: 2px;
+  flex-direction: column;
+}
+
+.plant {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-left: 2px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  background-color: #DEE1DD; 
+  color: #2F575D; 
+}
+
+.plant h2 {
+  margin-top: 0;
+}
+
+.plant p {
+  margin: 5px 0;
+}
+
+#plant-filter {
+  margin-right: 10px; /* Add space to the right of the select element */
+}
+
+#sortButton {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 10px; /* Add space above the button */
+  cursor: pointer;
+}
+
+#sortButton:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
+@media screen and (min-width: 769px) {
+  #plant-list {
+      grid-template-columns: repeat(2, 1fr); /* Generate two columns */
+  }
+}
