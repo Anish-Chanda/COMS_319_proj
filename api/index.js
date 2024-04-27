@@ -47,6 +47,25 @@ app.get("/plants", async (req, res) => {
   }
 });
 
+//handle login
+app.post("/login", async (req, res) => {
+  //extract email and pass, return early if either is missging
+  const { email, password } = req.body;
+  if (!email || !password) {
+    return res.status(400).send("Email and password required");
+  }
+
+  const userCollection = dbClient.db("SoilSentry").collection("Users");
+  const user = await userCollection.findOne({ email: email });
+
+  //compare password hashes
+  if (!user || user.password !== password) {
+    return res.status(401).send("Invalid login credentials");
+  }
+
+  return res.status(200).send({ id: user._id, email: user.email });
+});
+
 //Track telementry data
 app.post("/track", async (req, res) => {
   try {
