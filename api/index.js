@@ -47,6 +47,63 @@ app.get("/plants", async (req, res) => {
   }
 });
 
+//handle add plant
+app.post("/plants/add", async (req, res) => {
+  try {
+    //validate if body contains name, scientific name and image URL
+    const { name, scientificName, imageUrl } = req.body;
+
+    //return early if body not provided
+    if (!name || !scientificName || !imageUrl) {
+      return res.status(400).send("Name, scientific name and image URL required");
+    }
+
+    const coll = dbClient.db("SoilSentry").collection("Plants");
+    const doc = {
+      name,
+      scientificName,
+      imageUrl,
+    };
+
+    const dbRes = await coll.insertOne(doc);
+    console.log(dbRes);
+
+    return res.send("Plant added successfully");
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Error adding plant");
+  }
+});
+
+//create a update method that just upserts the name
+app.put("/plants/update/:id/:name", async (req, res) => {
+  try {
+    //validate if body contains plant ID and name
+    const id = req.params.id
+    const name = req.params.name
+
+    //return early if body not provided
+    if (!id || !name) {
+      return res.status(400).send("ID and name required");
+    }
+
+    const coll = dbClient.db("SoilSentry").collection("Plants");
+    const doc = {
+      name,
+    };
+
+    console.log({id})
+
+    const dbRes = await coll.updateOne({ _id: new ObjectId(id) }, { $set: doc });
+    console.log(dbRes);
+
+    return res.send("Plant updated successfully");
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Error updating plant");
+  }
+});
+
 //handle login
 app.post("/login", async (req, res) => {
   //extract email and pass, return early if either is missging
@@ -64,6 +121,29 @@ app.post("/login", async (req, res) => {
   }
 
   return res.status(200).send({ id: user._id, email: user.email });
+});
+
+//create a delete hander that extracts :id from the path 
+app.delete("/plants/delete/:id", async (req, res) => {
+  try {
+    //validate if body contains plant ID
+    const id = req.params.id;
+
+    //return early if body not provided
+    if (!id) {
+      return res.status(400).send("ID required");
+    }
+
+    const coll = dbClient.db("SoilSentry").collection("Plants");
+
+    const dbRes = await coll.deleteOne({ _id: new ObjectId(id) });
+    console.log(dbRes);
+
+    return res.send("Plant deleted successfully");
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Error deleting plant");
+  }
 });
 
 //Track telementry data
