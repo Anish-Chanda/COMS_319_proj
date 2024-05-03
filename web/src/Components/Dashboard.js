@@ -25,15 +25,18 @@ export default function Dashboard({ userId }) {
   const [plants, setPlants] = useState([]);
   const [selectedPlant, setSelectedPlant] = useState(null);
 
-  useEffect(() => {
-    axios
-      .get(`http://localhost:8080/user/${userId}/plants`)
-      .then((response) => {
-        setPlants(response.data.plants);
+  const fetchUserPlants = () => {
+    fetch(`http://localhost:8080/user/${userId}/plants`)
+      .then((res) => {
+        return res.json();
       })
-      .catch((error) => {
-        console.error("Error fetching plants:", error);
+      .then((data) => {
+        setPlants(data.plants);
       });
+  };
+
+  useEffect(() => {
+    fetchUserPlants();
   }, []);
 
   return (
@@ -223,13 +226,15 @@ export default function Dashboard({ userId }) {
                     <UserPlantList
                       userId={userId}
                       plants={plants}
+                      setPlants={setPlants}
+                      fetchUserPlants={fetchUserPlants}
                       setSelectedPlant={setSelectedPlant}
                     />
                   </div>
                   <div className="border-l border-gray-300 h-lvh mx-2"></div>
                   <div style={{ flex: "2" }}>
                     {/* Your larger section content */}
-                    <PlantDetails selectedPlant={selectedPlant}/>
+                    <PlantDetails selectedPlant={selectedPlant} />
                   </div>
                 </div>
               </div>
