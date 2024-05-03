@@ -108,3 +108,46 @@ app.post("/track", async (req, res) => {
     res.status(500).send("Error tracking data");
   }
 });
+
+//here get the plants in the users db and plants collection, and filter the plants by userid in the request path
+app.get("/user/:id/plants", async (req, res) => {
+  const userId = new ObjectId(req.params.id);
+  console.log("Fetching users plants for ..." + userId);
+  const coll = dbClient.db("Users").collection("Plants");
+  const plants = await coll.find({ user_id: userId }).toArray();
+  //console.log(plants);
+  res.send({ plants });
+});
+
+app.get("/plant/:id/telemetry", async (req, res) => {
+  const plantId = new ObjectId(req.params.id);
+  console.log("Fetching telemetry data for plant ..." + plantId);
+  const coll = dbClient.db("SoilSentry").collection("Telemetry");
+
+  const telemetryData = await coll
+    .aggregate([
+      { $match: { plant_id: plantId } },
+      {
+        $group: {
+          _id: {
+            year: { $year: "$date" },
+            month: { $month: "$date" },
+            day: { $dayOfMonth: "$date" },
+            hour: { $hour: "$date" },
+            type: "$data.type",
+          },
+          averageValue: { $avg: "$data.value" },
+        },
+      },
+      { $sort: { "_id.year": -1, "_id.month": -1, "_id.day": -1, "_id.hour": -1 } },
+      { $limit: 20 },
+      { $project: { _id: 0, averageValue: 1 , date: "$_id"} }
+    ])
+    .toArray();
+
+  //console.log(telemetryData);
+  res.send({ telemetryData });
+});
+
+
+

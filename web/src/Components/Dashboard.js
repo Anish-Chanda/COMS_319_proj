@@ -1,6 +1,9 @@
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import axios from "axios";
+import UserPlantList from "./UserPlantList";
+import PlantDetails from "./PlantDetails";
 
 const user = {
   name: "Anish",
@@ -8,9 +11,7 @@ const user = {
   imageUrl:
     "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQvHrnHN0v6cH0v_YgxmgUkpdN_RzVyB-lnNdpXwzuhymjuoi0NdgcnMHbk8nAwKGb-ISVxVQ",
 };
-const navigation = [
-  { name: "Dashboard", href: "#", current: true },
-];
+const navigation = [{ name: "Dashboard", href: "#", current: true }];
 const userNavigation = [
   { name: "Your Profile", href: "#" },
   { name: "Sign out", href: "#" },
@@ -20,18 +21,24 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Example() {
+export default function Dashboard({ userId }) {
+  const [plants, setPlants] = useState([]);
+  const [selectedPlant, setSelectedPlant] = useState(null);
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8080/user/${userId}/plants`)
+      .then((response) => {
+        setPlants(response.data.plants);
+      })
+      .catch((error) => {
+        console.error("Error fetching plants:", error);
+      });
+  }, []);
+
   return (
     <>
-      {/*
-        This example requires updating your template:
-
-        ```
-        <html class="h-full bg-gray-100">
-        <body class="h-full">
-        ```
-      */}
-      <div className="h-full w-full flex flex-col justify-center">
+      <div className="w-full flex flex-col justify-center bg-white h-lvh">
         <div className="h-full flex-1 flex-col justify-center">
           <Disclosure as="nav" className="bg-gray-800">
             {({ open }) => (
@@ -201,15 +208,31 @@ export default function Example() {
           </Disclosure>
 
           <header className="bg-white shadow">
-            <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-screen-2xl px-4 py-6 sm:px-6 lg:px-8">
               <h1 className="text-3xl font-bold tracking-tight text-gray-900">
                 Dashboard
               </h1>
             </div>
           </header>
           <main>
-            <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+            <div className="mx-auto py-6 sm:px-6 lg:px-8">
               {/* Your content */}
+              <div className="mx-auto max-w-screen-2xl py-6 sm:px-6 lg:px-8">
+                <div style={{ display: "flex" }}>
+                  <div style={{ flex: "1" }}>
+                    <UserPlantList
+                      userId={userId}
+                      plants={plants}
+                      setSelectedPlant={setSelectedPlant}
+                    />
+                  </div>
+                  <div className="border-l border-gray-300 h-lvh mx-2"></div>
+                  <div style={{ flex: "2" }}>
+                    {/* Your larger section content */}
+                    <PlantDetails selectedPlant={selectedPlant}/>
+                  </div>
+                </div>
+              </div>
             </div>
           </main>
         </div>
