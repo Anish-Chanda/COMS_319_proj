@@ -1,9 +1,12 @@
 const express = require("express");
 require("dotenv").config();
 const cors = require("cors");
+const path = require("path");
 const { MongoClient, ObjectId } = require("mongodb");
 
 const app = express();
+//deploy react app
+app.use(express.static(path.join(__dirname, "../web/build")));
 app.use(cors());
 app.use(express.json());
 
@@ -215,4 +218,9 @@ app.post("/plants/add", async (req, res) => {
   const dbRes = await coll.insertOne(plant);
   console.log(dbRes);
   res.send({ ...plant, _id: dbRes.insertedId });
+});
+
+//serve react app
+app.get("*", (req, res) => {
+  res.sendFile(__dirname + "../web/build/index.html");
 });
