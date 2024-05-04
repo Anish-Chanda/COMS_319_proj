@@ -4,6 +4,7 @@ import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import axios from "axios";
 import UserPlantList from "./UserPlantList";
 import PlantDetails from "./PlantDetails";
+import PlantCard from "./PlantCard";
 
 const user = {
   name: "Anish",
@@ -11,7 +12,10 @@ const user = {
   imageUrl:
     "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQvHrnHN0v6cH0v_YgxmgUkpdN_RzVyB-lnNdpXwzuhymjuoi0NdgcnMHbk8nAwKGb-ISVxVQ",
 };
-const navigation = [{ name: "Dashboard", href: "#", current: true }];
+const navigation = [
+  { name: "Dashboard", href: "#", current: true },
+  { name: "Plants Wiki", href: "#", current: false },
+];
 const userNavigation = [
   { name: "Your Profile", href: "#" },
   { name: "Sign out", href: "#" },
@@ -24,6 +28,8 @@ function classNames(...classes) {
 export default function Dashboard({ userId }) {
   const [plants, setPlants] = useState([]);
   const [selectedPlant, setSelectedPlant] = useState(null);
+  const [view, setView] = useState("dashboard");
+  const [allPlants, setAllPlants] = useState([]);
 
   const fetchUserPlants = () => {
     fetch(`http://localhost:8080/user/${userId}/plants`)
@@ -34,6 +40,37 @@ export default function Dashboard({ userId }) {
         setPlants(data.plants);
       });
   };
+
+  async function fetchPlants(type) {
+    console.log("fetching all plants....");
+    try {
+      let res;
+      if (type === undefined) {
+        res = await fetch("http://localhost:8080/plants");
+      } else {
+        res = await fetch(`http://localhost:8080/plants?type=${type}`);
+      }
+      const plants = await res.json();
+      setAllPlants(plants["plants"]);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  const handlePlantUpdate = (updatedPlant) => {
+    setAllPlants(
+      allPlants.map((plant) => {
+        console.log("found match while updating plant...");
+        return plant._id === updatedPlant._id ? updatedPlant : plant;
+      })
+    );
+  };
+
+  useEffect(() => {
+    if (view === "plantswiki") {
+      fetchPlants();
+    }
+  }, [view]);
 
   useEffect(() => {
     fetchUserPlants();
@@ -62,13 +99,23 @@ export default function Dashboard({ userId }) {
                             <a
                               key={item.name}
                               href={item.href}
+                              onClick={() => {
+                                console.log(
+                                  "setting view to " +
+                                    item.name.toLowerCase().replace(" ", "")
+                                );
+                                return setView(
+                                  item.name.toLowerCase().replace(" ", "")
+                                );
+                              }}
                               className={classNames(
-                                item.current
+                                item.name.toLowerCase().replace(" ", "") ===
+                                  view
                                   ? "bg-gray-900 text-white"
                                   : "text-gray-300 hover:bg-gray-700 hover:text-white",
                                 "rounded-md px-3 py-2 text-sm font-medium"
                               )}
-                              aria-current={item.current ? "page" : undefined}
+                              // aria-current={item.name.toLowerCase().replace(" ", "") === "" ? "page" : undefined}
                             >
                               {item.name}
                             </a>
@@ -155,11 +202,20 @@ export default function Dashboard({ userId }) {
                         key={item.name}
                         as="a"
                         href={item.href}
+                        onClick={() => {
+                          console.log(
+                            "setting view to " +
+                              item.name.toLowerCase().replace(" ", "")
+                          );
+                          return setView(
+                            item.name.toLowerCase().replace(" ", "")
+                          );
+                        }}
                         className={classNames(
-                          item.current
+                          item.name.toLowerCase().replace(" ", "") === view
                             ? "bg-gray-900 text-white"
                             : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                          "block rounded-md px-3 py-2 text-base font-medium"
+                          "rounded-md px-3 py-2 text-sm font-medium"
                         )}
                         aria-current={item.current ? "page" : undefined}
                       >
@@ -212,32 +268,54 @@ export default function Dashboard({ userId }) {
 
           <header className="bg-white shadow">
             <div className="mx-auto max-w-screen-2xl px-4 py-6 sm:px-6 lg:px-8">
-              <h1 className="text-3xl font-bold tracking-tight text-gray-900">
-                Dashboard
-              </h1>
+              {view === "dashboard" && (
+                <h1 className="text-3xl font-bold tracking-tight text-gray-900">
+                  My Plants
+                </h1>
+              )}
+              {view === "plantswiki" && (
+                <h1 className="text-3xl font-bold tracking-tight text-gray-900">
+                  Plants Wiki
+                </h1>
+              )}
             </div>
           </header>
           <main>
             <div className="mx-auto py-6 sm:px-6 lg:px-8">
-              {/* Your content */}
-              <div className="mx-auto max-w-screen-2xl py-6 sm:px-6 lg:px-8">
-                <div style={{ display: "flex" }}>
-                  <div style={{ flex: "1" }}>
-                    <UserPlantList
-                      userId={userId}
-                      plants={plants}
-                      setPlants={setPlants}
-                      fetchUserPlants={fetchUserPlants}
-                      setSelectedPlant={setSelectedPlant}
-                    />
-                  </div>
-                  <div className="border-l border-gray-300 h-lvh mx-2"></div>
-                  <div style={{ flex: "2" }}>
-                    {/* Your larger section content */}
-                    <PlantDetails selectedPlant={selectedPlant} />
+              {/* content */}
+              {view === "dashboard" && (
+                <div className="mx-auto max-w-screen-2xl py-6 sm:px-6 lg:px-8">
+                  <div style={{ display: "flex" }}>
+                    <div style={{ flex: "1" }}>
+                      <UserPlantList
+                        userId={userId}
+                        plants={plants}
+                        setPlants={setPlants}
+                        fetchUserPlants={fetchUserPlants}
+                        setSelectedPlant={setSelectedPlant}
+                      />
+                    </div>
+                    <div className="border-l border-gray-300 h-lvh mx-2"></div>
+                    <div style={{ flex: "2" }}>
+                      {/* Your larger section content */}
+                      <PlantDetails selectedPlant={selectedPlant} />
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
+              {view === "plantswiki" && (
+                <div className="mx-auto max-w-screen-2xl py-6 sm:px-6 lg:px-8">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 ">
+                    {allPlants.map((plant) => (
+                      <PlantCard
+                        key={plant.id}
+                        plant={plant}
+                        onPlantUpdate={handlePlantUpdate}
+                      />
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           </main>
         </div>

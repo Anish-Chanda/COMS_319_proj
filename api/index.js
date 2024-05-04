@@ -139,16 +139,22 @@ app.get("/plant/:id/telemetry", async (req, res) => {
           averageValue: { $avg: "$data.value" },
         },
       },
-      { $sort: { "_id.year": -1, "_id.month": -1, "_id.day": -1, "_id.hour": -1 } },
+      {
+        $sort: {
+          "_id.year": -1,
+          "_id.month": -1,
+          "_id.day": -1,
+          "_id.hour": -1,
+        },
+      },
       { $limit: 20 },
-      { $project: { _id: 0, averageValue: 1 , date: "$_id"} }
+      { $project: { _id: 0, averageValue: 1, date: "$_id" } },
     ])
     .toArray();
 
   //console.log(telemetryData);
   res.send({ telemetryData });
 });
-
 
 //fetch plant data from SoilSentry.Plants with the passed in ID in get req and add it to Users.Plants
 app.put("/user/:id/plants/add/:plant_id", async (req, res) => {
@@ -158,16 +164,15 @@ app.put("/user/:id/plants/add/:plant_id", async (req, res) => {
 
   //fetch plant details
   const plantDeets = dbClient.db("SoilSentry").collection("Plants").findOne({
-    _id: plantId
-  })
+    _id: plantId,
+  });
 
   const { _id, ...plantDetailsWithoutId } = await plantDeets;
-
 
   const coll = dbClient.db("Users").collection("Plants");
   const doc = {
     user_id: userId,
-    ...plantDetailsWithoutId
+    ...plantDetailsWithoutId,
   };
 
   const dbRes = await coll.insertOne(doc);
@@ -176,3 +181,18 @@ app.put("/user/:id/plants/add/:plant_id", async (req, res) => {
   return res.send("Added plant to user");
 });
 
+//post handler that updates the plant document, get id from the body
+app.post("/plants/update", async (req, res) => {
+  const plant = req.body;
+  console.log("Updating plant...", plant);
+  const coll = dbClient.db("SoilSentry").collection("Plants");
+  const updateObject = { ...plant };
+  delete updateObject._id;
+
+  const dbRes = await coll.updateOne(
+    { _id: new ObjectId(plant._id) },
+    { $set: updateObject }
+  );
+  console.log(dbRes);
+  res.send("Updated plant");
+});

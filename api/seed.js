@@ -4,6 +4,7 @@ const { MongoClient } = require("mongodb");
 const data = [
   {
     name: "Snake Plant",
+    img: "https://plus.unsplash.com/premium_photo-1673969608395-9281e5e4395f?q=80&w=3108&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     scientific_name: "Sansevieria trifasciata",
     soil_mix: "Well-draining potting mix",
     flowers: "Rarely blooms indoors",
@@ -14,6 +15,7 @@ const data = [
   },
   {
     name: "Peace Lily",
+    img: "https://images.unsplash.com/photo-1593691509543-c55fb32d8de5?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     scientific_name: "Spathiphyllum wallisii",
     soil_mix: "Moist, well-draining potting mix",
     flowers: "White",
@@ -24,6 +26,7 @@ const data = [
   },
   {
     name: "Aloe Vera",
+    img: "https://images.unsplash.com/photo-1596547609652-9cf5d8d76921?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     scientific_name: "Aloe barbadensis",
     soil_mix: "Sandy, well-draining soil",
     flowers: "Yellow-orange",
@@ -34,6 +37,7 @@ const data = [
   },
   {
     name: "Spider Plant",
+    img: "https://images.unsplash.com/photo-1596547609652-9cf5d8d76921?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     scientific_name: "Chlorophytum comosum",
     soil_mix: "Well-draining potting mix",
     flowers: "Small white flowers",
@@ -44,6 +48,7 @@ const data = [
   },
   {
     name: "Jade Plant",
+    img: "https://images.unsplash.com/photo-1616189597001-9046fce2594d?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     scientific_name: "Crassula ovata",
     soil_mix: "Well-draining cactus mix",
     flowers: "Pink or white",
@@ -54,6 +59,7 @@ const data = [
   },
   {
     name: "English Ivy",
+    img: "https://images.unsplash.com/photo-1657401923955-efe43f7d1196?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     scientific_name: "Hedera helix",
     soil_mix: "Well-draining potting mix",
     flowers: "Greenish-yellow",
@@ -64,6 +70,7 @@ const data = [
   },
   {
     name: "ZZ Plant",
+    img: "https://images.unsplash.com/photo-1632207691143-643e2a9a9361?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     scientific_name: "Zamioculcas zamiifolia",
     soil_mix: "Well-draining potting mix",
     flowers: "Rarely blooms indoors",
@@ -74,6 +81,7 @@ const data = [
   },
   {
     name: "Lavender",
+    img: "https://images.unsplash.com/photo-1494419893766-1b87343e7eff?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     scientific_name: "Lavandula angustifolia",
     soil_mix: "Well-draining, alkaline soil",
     flowers: "Lavender to purple",
@@ -84,6 +92,7 @@ const data = [
   },
   {
     name: "Succulent Echeveria",
+    img: "https://plus.unsplash.com/premium_photo-1672998563388-5976b020f4a2?q=80&w=1924&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     scientific_name: "Echeveria spp.",
     soil_mix: "Well-draining cactus mix",
     flowers: "Pink, orange, red, yellow",
@@ -94,6 +103,7 @@ const data = [
   },
   {
     name: "Rubber Plant",
+    img: "https://images.unsplash.com/photo-1616132803693-958f93bffb5b?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     scientific_name: "Ficus elastica",
     soil_mix: "Well-draining potting mix",
     flowers: "Insignificant indoors",
@@ -104,6 +114,7 @@ const data = [
   },
   {
     name: "Fiddle Leaf Fig",
+    img: "https://images.unsplash.com/photo-1453904300235-0f2f60b15b5d?q=80&w=1886&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     scientific_name: "Ficus lyrata",
     soil_mix: "Well-draining potting mix",
     flowers: "Rarely flowers indoors",
@@ -114,6 +125,7 @@ const data = [
   },
   {
     name: "Bamboo Palm",
+    img: "Bamboo Palm",
     scientific_name: "Chamaedorea seifrizii",
     soil_mix: "Moist, well-draining potting mix",
     flowers: "Small white flowers",
@@ -124,6 +136,7 @@ const data = [
   },
   {
     name: "Chinese Money Plant",
+    img: "https://images.unsplash.com/photo-1641816481895-a5e872c9c9a5?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     scientific_name: "Pilea peperomioides",
     soil_mix: "Well-draining potting mix",
     flowers: "Insignificant indoors",
@@ -134,6 +147,7 @@ const data = [
   },
   {
     name: "String of Pearls",
+    img: "https://images.unsplash.com/photo-1595313356207-52d15f1a35be?q=80&w=1888&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     scientific_name: "Senecio rowleyanus",
     soil_mix: "Well-draining cactus mix",
     flowers: "Small white flowers",
@@ -144,6 +158,7 @@ const data = [
   },
   {
     name: "Boston Fern",
+    img: "https://images.unsplash.com/photo-1599148401005-fe6d7497cb5e?q=80&w=1854&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     scientific_name: "Nephrolepis exaltata",
     soil_mix: "Moist, well-draining potting mix",
     flowers: "Insignificant indoors",
@@ -154,6 +169,7 @@ const data = [
   },
   {
     name: "Philodendron",
+    img: "https://images.unsplash.com/photo-1600411833196-7c1f6b1a8b90?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     scientific_name: "Philodendron spp.",
     soil_mix: "Well-draining potting mix",
     flowers: "Rarely flowers indoors",
@@ -164,6 +180,7 @@ const data = [
   },
   {
     name: "Swiss Cheese Plant",
+    img: "https://images.unsplash.com/photo-1597211057963-3806e96714c7?q=80&w=1928&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     scientific_name: "Monstera deliciosa",
     soil_mix: "Well-draining potting mix",
     flowers: "Rarely flowers indoors",
@@ -174,6 +191,7 @@ const data = [
   },
   {
     name: "Bird of Paradise",
+    img: "https://plus.unsplash.com/premium_photo-1678910963263-aab5cf376c7f?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     scientific_name: "Strelitzia reginae",
     soil_mix: "Well-draining potting mix",
     flowers: "Orange and blue",
@@ -184,6 +202,7 @@ const data = [
   },
   {
     name: "Sago Palm",
+    img: "https://images.unsplash.com/photo-1592014876894-139779163b5a?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     scientific_name: "Cycas revoluta",
     soil_mix: "Well-draining potting mix",
     flowers: "Cone-like structures",
@@ -194,6 +213,7 @@ const data = [
   },
   {
     name: "Peperomia",
+    img: "https://images.unsplash.com/photo-1610630876605-97b3e670f56c?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     scientific_name: "Peperomia spp.",
     soil_mix: "Well-draining potting mix",
     flowers: "Insignificant indoors",
@@ -204,6 +224,7 @@ const data = [
   },
   {
     name: "Pothos",
+    img: "https://images.unsplash.com/photo-1595524147656-eb5d0a63e9a9?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     scientific_name: "Epipremnum aureum",
     soil_mix: "Well-draining potting mix",
     flowers: "Rarely blooms indoors",
@@ -214,6 +235,7 @@ const data = [
   },
   {
     name: "Calathea",
+    img: "https://images.unsplash.com/photo-1602879952653-a3830f12a7cb?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     scientific_name: "Calathea spp.",
     soil_mix: "Well-draining potting mix",
     flowers: "Insignificant indoors",
@@ -224,6 +246,7 @@ const data = [
   },
   {
     name: "Zebra Plant",
+    img: "https://images.unsplash.com/photo-1547517023-d6636f40c12a?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     scientific_name: "Aphelandra squarrosa",
     soil_mix: "Well-draining potting mix",
     flowers: "Yellow bracts with small white flowers",
@@ -234,6 +257,7 @@ const data = [
   },
   {
     name: "Christmas Cactus",
+    img: "https://images.unsplash.com/photo-1509587584298-0f3b3a3a1797?q=80&w=1913&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     scientific_name: "Schlumbergera bridgesii",
     soil_mix: "Well-draining potting mix",
     flowers: "Various colors including pink, red, orange, and white",
@@ -244,6 +268,7 @@ const data = [
   },
   {
     name: "Fern",
+    img: "https://images.unsplash.com/photo-1599148401005-fe6d7497cb5e?q=80&w=1854&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     scientific_name: "Nephrolepis spp.",
     soil_mix: "Moist, well-draining potting mix",
     flowers: "Insignificant indoors",
@@ -254,6 +279,7 @@ const data = [
   },
   {
     name: "African Violet",
+    img: "https://images.unsplash.com/photo-1525663018617-37753d540108?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8QWZyaWNhbiUyMFZpb2xldCUyMHBsYW50fGVufDB8MXwwfHx8MA%3D%3D",
     scientific_name: "Saintpaulia spp.",
     soil_mix: "Well-draining potting mix",
     flowers: "Various colors including purple, blue, pink, and white",
@@ -264,6 +290,7 @@ const data = [
   },
   {
     name: "Hoya",
+    img: "https://images.unsplash.com/photo-1673943834582-244e02989ef3?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     scientific_name: "Hoya spp.",
     soil_mix: "Well-draining potting mix",
     flowers: "Various colors including pink, red, and white",
@@ -274,6 +301,7 @@ const data = [
   },
   {
     name: "Dumb Cane",
+    img: "https://images.unsplash.com/photo-1677083809747-5d939dc82715?q=80&w=1854&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     scientific_name: "Dieffenbachia spp.",
     soil_mix: "Well-draining potting mix",
     flowers: "Insignificant indoors",
@@ -283,17 +311,8 @@ const data = [
     type: "Houseplant",
   },
   {
-    name: "Lipstick Plant",
-    scientific_name: "Aeschynanthus spp.",
-    soil_mix: "Well-draining potting mix",
-    flowers: "Red, tube-shaped flowers",
-    fruits: "Non-edible",
-    zone: "10-12",
-    sunlight: "Indirect light to moderate light",
-    type: "Houseplant",
-  },
-  {
     name: "Moth Orchid",
+    img: "https://plus.unsplash.com/premium_photo-1676253694654-79c2214ccbc7?q=80&w=3088&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     scientific_name: "Phalaenopsis spp.",
     soil_mix: "Well-draining orchid mix",
     flowers: "Various colors including white, pink, purple, and yellow",
@@ -304,6 +323,7 @@ const data = [
   },
   {
     name: "Air Plant",
+    img: "https://images.unsplash.com/photo-1602491673920-1d856a9574b8?q=80&w=2944&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     scientific_name: "Tillandsia spp.",
     soil_mix: "No soil needed, absorbs nutrients through leaves",
     flowers: "Various colors including purple, pink, and red",
@@ -314,6 +334,7 @@ const data = [
   },
   {
     name: "Flamingo Flower",
+    img: "https://images.unsplash.com/photo-1688546360675-d56b8c298410?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     scientific_name: "Anthurium spp.",
     soil_mix: "Well-draining potting mix",
     flowers: "Red, pink, or white spathes",
@@ -322,9 +343,9 @@ const data = [
     sunlight: "Indirect light to moderate light",
     type: "Houseplant",
   },
-
   {
     name: "Begonia",
+    img: "https://images.unsplash.com/photo-1561631538-b4f96db97902?q=80&w=2970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     scientific_name: "Begonia spp.",
     soil_mix: "Well-draining potting mix",
     flowers: "Various colors including pink, red, orange, and white",
@@ -335,6 +356,7 @@ const data = [
   },
   {
     name: "Pilea",
+    img: "https://images.unsplash.com/photo-1600411832986-5a4477b64a1c?q=80&w=2944&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     scientific_name: "Pilea spp.",
     soil_mix: "Well-draining potting mix",
     flowers: "Insignificant indoors",
@@ -343,9 +365,9 @@ const data = [
     sunlight: "Indirect light to moderate light",
     type: "Houseplant",
   },
-
   {
     name: "Roses",
+    img: "https://images.unsplash.com/photo-1601278963628-7b7b7cbdfe96?q=80&w=3024&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     scientific_name: "Rosa spp.",
     soil_mix: "Well-draining soil rich in organic matter",
     flowers: "Various colors including red, pink, yellow, and white",
@@ -356,6 +378,7 @@ const data = [
   },
   {
     name: "Marigolds",
+    img: "https://images.unsplash.com/photo-1613899697749-0a46140e1166?q=80&w=3072&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     scientific_name: "Tagetes erecta",
     soil_mix: "Well-draining soil",
     flowers: "Various colors including yellow, orange, and red",
@@ -365,6 +388,7 @@ const data = [
   },
   {
     name: "Zinnias",
+    img: "https://images.unsplash.com/photo-1440749395129-76b2ae3df520?q=80&w=3072&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     scientific_name: "Zinnia elegans",
     soil_mix: "Well-draining soil",
     flowers: "Various colors such as pink, red, orange, yellow, and white",
@@ -374,6 +398,7 @@ const data = [
   },
   {
     name: "Cosmos",
+    img: "https://images.unsplash.com/photo-1614353454947-7346018f82a3?q=80&w=2971&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     scientific_name: "Cosmos bipinnatus",
     soil_mix: "Well-draining soil",
     flowers: "Various colors including pink, white, and purple",
@@ -381,20 +406,9 @@ const data = [
     sunlight: "Full sun",
     type: "Annual",
   },
-
-  {
-    name: "Lavender",
-    scientific_name: "Lavandula spp.",
-    soil_mix: "Sandy, well-draining soil",
-    flowers: "Purple, pink, or white",
-    fruits: "Non-edible",
-    zone: "5-9",
-    sunlight: "Full sun",
-    type: "perennial",
-  },
-
   {
     name: "Sunflowers",
+    img: "https://images.unsplash.com/photo-1597848212624-a19eb35e2651?q=80&w=3024&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     scientific_name: "Helianthus annuus",
     soil_mix: "Well-draining soil",
     flowers: "Bright yellow with dark centers",
@@ -403,9 +417,9 @@ const data = [
     sunlight: "Full sun",
     type: "Annual",
   },
-
   {
     name: "Lilies",
+    img: "https://images.unsplash.com/photo-1532009871151-e1958667c80d?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     scientific_name: "Lilium spp.",
     soil_mix: "Well-draining soil rich in organic matter",
     flowers: "Various colors including white, pink, orange, and red",
@@ -414,9 +428,9 @@ const data = [
     sunlight: "Full sun to part shade",
     type: "perennial",
   },
-
   {
     name: "Hydrangeas",
+    img: "https://images.unsplash.com/photo-1531875565264-5b473e59fa07?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     scientific_name: "Hydrangea spp.",
     soil_mix: "Moist, well-draining soil",
     flowers: "Blue, pink, white, or purple depending on soil acidity",
@@ -427,6 +441,7 @@ const data = [
   },
   {
     name: "Dahlias",
+    img: "https://images.unsplash.com/photo-1603507311949-07c0aeee4fe7?q=80&w=2603&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     scientific_name: "Dahlia spp.",
     soil_mix: "Well-draining soil",
     flowers: "Various colors and shapes",
@@ -435,9 +450,9 @@ const data = [
     sunlight: "Full sun",
     type: "tuberous perennial",
   },
-
   {
     name: "Peonies",
+    img: "https://plus.unsplash.com/premium_photo-1685030411287-ed95797d421e?q=80&w=3135&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     scientific_name: "Paeonia spp.",
     soil_mix: "Well-draining, fertile soil",
     flowers: "Various colors including white, pink, and red",
@@ -446,9 +461,9 @@ const data = [
     sunlight: "Full sun to part shade",
     type: "perennial",
   },
-
   {
     name: "Hostas",
+    img: "https://images.unsplash.com/photo-1710631755841-8d4aaf365f7d?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     scientific_name: "Hosta spp.",
     soil_mix: "Moist, well-draining soil",
     flowers: "White or purple spikes",
@@ -459,6 +474,7 @@ const data = [
   },
   {
     name: "Geraniums",
+    img: "https://images.unsplash.com/photo-1554506927-16f3a672b148?q=80&w=2970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     scientific_name: "Pelargonium spp.",
     soil_mix: "Well-draining soil",
     flowers: "Various colors including red, pink, white, and purple",
@@ -467,9 +483,9 @@ const data = [
     sunlight: "Full sun to part shade",
     type: "perennial",
   },
-
   {
     name: "Salvia",
+    img: "https://images.unsplash.com/photo-1710666420242-36b6432df23d?q=80&w=3000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     scientific_name: "Salvia spp.",
     soil_mix: "Well-draining soil",
     flowers: "Various colors including blue, purple, red, and white",
@@ -478,9 +494,9 @@ const data = [
     sunlight: "Full sun",
     type: "perennial",
   },
-
   {
     name: "Ferns",
+    img: "https://images.unsplash.com/photo-1660736876018-532f3d3c5e18?q=80&w=3135&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     scientific_name: "Filicophyta spp.",
     soil_mix: "Rich, well-draining soil",
     flowers: "Non-flowering",
@@ -491,20 +507,29 @@ const data = [
   },
 ];
 
-async function seed() {
-  const uri = process.env.MONGO_URI;
-
-  if (!uri) {
-    throw new Error("Mongo URI is missing");
-  }
-
-  const dbClient = await new MongoClient(uri).connect();
+async function seedDB() {
+  const client = new MongoClient(process.env.MONGO_URI, {
+    useUnifiedTopology: true,
+  });
 
   try {
-    dbClient.db("SoilSentry").collection("Plants").insertMany(data);
-  } catch (error) {
-    console.error(error);
+    await client.connect();
+    const db = client.db("SoilSentry");
+    const collection = db.collection("Plants");
+
+    // Drop the collection if it already exists
+    if ((await collection.countDocuments({})) !== 0) {
+      await collection.drop();
+    }
+
+    // Insert
+    await collection.insertMany(data);
+    console.log("Data has been inserted successfully");
+  } catch (err) {
+    console.error("Error while seeding database", err);
+  } finally {
+    await client.close();
   }
 }
 
-seed();
+seedDB();
