@@ -30,6 +30,7 @@ export default function Dashboard({ userId }) {
   const [selectedPlant, setSelectedPlant] = useState(null);
   const [view, setView] = useState("dashboard");
   const [allPlants, setAllPlants] = useState([]);
+  const [isAddingNewPlant, setIsAddingNewPlant] = useState(false);
 
   const fetchUserPlants = () => {
     fetch(`http://localhost:8080/user/${userId}/plants`)
@@ -39,6 +40,45 @@ export default function Dashboard({ userId }) {
       .then((data) => {
         setPlants(data.plants);
       });
+  };
+
+  const handleNewPlantSubmit = async (event) => {
+    event.preventDefault();
+    const newPlant = {
+      name: event.target.name.value,
+      scientific_name: event.target.scientific_name.value,
+      type: event.target.type.value,
+      sunlight: event.target.sunlight.value,
+      water: event.target.water.value,
+      soil: event.target.soil.value,
+      fertilizer: event.target.fertilizer.value,
+      pot_size: event.target.pot_size.value,
+    };
+    addToAllPlants(newPlant);
+    setIsAddingNewPlant(false);
+  };
+
+  const handleDelete = async (plantId) => {
+    console.log("deleting plant..." + plantId);
+    //console.log({ plantId });
+    try {
+      await axios.delete(`http://localhost:8080/plants/${plantId}`);
+      setAllPlants(allPlants.filter((plant) => plant._id !== plantId));
+    } catch (error) {
+      console.error("Error deleting plant", error);
+    }
+  };
+
+  const addToAllPlants = async (newPlant) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:8080/plants/add",
+        newPlant
+      );
+      setAllPlants([...allPlants, response.data]);
+    } catch (error) {
+      console.error("Error adding plant", error);
+    }
   };
 
   async function fetchPlants(type) {
@@ -305,12 +345,37 @@ export default function Dashboard({ userId }) {
               )}
               {view === "plantswiki" && (
                 <div className="mx-auto max-w-screen-2xl py-6 sm:px-6 lg:px-8">
+                  <button onClick={() => setIsAddingNewPlant(true)}>
+                    Add New Plant
+                  </button>
+                  {isAddingNewPlant && (
+                    <form onSubmit={handleNewPlantSubmit}>
+                      <input name="name" required placeholder="Name" />
+                      <input
+                        name="scientific_name"
+                        required
+                        placeholder="Scientific Name"
+                      />
+                      <input name="type" required placeholder="Type" />
+                      <input name="sunlight" required placeholder="Sunlight" />
+                      <input name="water" required placeholder="Water" />
+                      <input name="soil" required placeholder="Soil" />
+                      <input
+                        name="fertilizer"
+                        required
+                        placeholder="Fertilizer"
+                      />
+                      <input name="pot_size" required placeholder="Pot Size" />
+                      <button type="submit">Submit</button>
+                    </form>
+                  )}
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 ">
                     {allPlants.map((plant) => (
                       <PlantCard
                         key={plant.id}
                         plant={plant}
                         onPlantUpdate={handlePlantUpdate}
+                        handleDelete={handleDelete}
                       />
                     ))}
                   </div>

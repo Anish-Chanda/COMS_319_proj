@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { FaPencilAlt, FaSave } from "react-icons/fa";
+import { FaPencilAlt, FaSave, FaTrash } from "react-icons/fa";
 import axios from "axios";
 
-function PlantCard({ plant, onPlantUpdate }) {
+function PlantCard({ plant, onPlantUpdate, handleDelete }) {
   const [isEditing, setIsEditing] = useState(false);
   const [editedPlant, setEditedPlant] = useState(plant);
 
@@ -133,6 +133,15 @@ function PlantCard({ plant, onPlantUpdate }) {
         className="ml-4"
       >
         {isEditing ? <FaSave /> : <FaPencilAlt />}
+      </button>
+      <button
+        onClick={() => {
+          handleDelete(plant._id);
+        }}
+        className="ml-4"
+      >
+        <FaTrash />{" "}
+        {/* Assuming you've imported FaTrash from 'react-icons/fa' */}
       </button>
     </div>
   );

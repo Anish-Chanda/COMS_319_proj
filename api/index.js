@@ -196,3 +196,23 @@ app.post("/plants/update", async (req, res) => {
   console.log(dbRes);
   res.send("Updated plant");
 });
+
+//delete handler to delete with ID
+app.delete("/plants/:id", async (req, res) => {
+  const plantId = new ObjectId(req.params.id);
+  console.log("Deleting plant..." + plantId);
+  const coll = dbClient.db("SoilSentry").collection("Plants");
+  const dbRes = await coll.deleteOne({ _id: plantId });
+  console.log(dbRes);
+  res.send("Deleted plant");
+});
+
+//post /plants/add which adds a new plant
+app.post("/plants/add", async (req, res) => {
+  const plant = req.body;
+  console.log("Adding plant...", plant);
+  const coll = dbClient.db("SoilSentry").collection("Plants");
+  const dbRes = await coll.insertOne(plant);
+  console.log(dbRes);
+  res.send({ ...plant, _id: dbRes.insertedId });
+});
