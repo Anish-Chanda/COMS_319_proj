@@ -52,6 +52,9 @@ app.get("/plants", async (req, res) => {
 
 //handle login
 app.post("/login", async (req, res) => {
+  const reqBody = req.body;
+
+  console.log({ reqBody });
   //extract email and pass, return early if either is missging
   const { email, password } = req.body;
   if (!email || !password) {
@@ -82,8 +85,8 @@ app.post("/track", async (req, res) => {
     }
 
     //return early if body doesnt contain project ID and data type
-    if (!data.user_id || !data.data) {
-      return res.status(400).send("User ID and data required");
+    if (!data.user_id || !data.data || !data.plant_id) {
+      return res.status(400).send("User ID and data and plant_id is required");
     }
 
     //return early if data doesnt contain type, value or unit
@@ -95,6 +98,7 @@ app.post("/track", async (req, res) => {
     const doc = {
       user_id: new ObjectId(data.user_id),
       date: new Date().toISOString(),
+      plant_id: new ObjectId(data.plant_id),
       data: {
         type: data.data.type,
         value: data.data.value,
