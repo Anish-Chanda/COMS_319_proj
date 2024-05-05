@@ -69,7 +69,7 @@ app.post("/login", async (req, res) => {
     return res.status(401).send("Invalid login credentials");
   }
 
-  return res.status(200).send({ id: user._id, email: user.email });
+  return res.status(200).send({ id: user._id, email: user.email, isAdmin: user.isAdmin });
 });
 
 //Track telementry data

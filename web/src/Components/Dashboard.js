@@ -25,7 +25,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Dashboard({ userId }) {
+export default function Dashboard({ userId, isAdmin }) {
   const [plants, setPlants] = useState([]);
   const [selectedPlant, setSelectedPlant] = useState(null);
   const [view, setView] = useState("dashboard");
@@ -380,6 +380,7 @@ export default function Dashboard({ userId }) {
                         plant={plant}
                         onPlantUpdate={handlePlantUpdate}
                         handleDelete={handleDelete}
+                        isAdmin={isAdmin}
                       />
                     ))}
                   </div>

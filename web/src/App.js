@@ -6,6 +6,8 @@ import About from "./Components/AboutPage";
 
 function App() {
   const [view, setView] = useState("");
+  const [userId, setUserId] = useState("");
+  const [isAdmin, setIsAdmin] = useState(false);
 
   return (
     <div
@@ -29,9 +31,9 @@ function App() {
           </button>
         </div>
       )}
-      {view === "login" && <LoginForm setView={setView} />}
+      {view === "login" && <LoginForm setView={setView} setIsAdmin={setIsAdmin} setUserId={setUserId}/>}
       {view === "dashboard" && (
-        <Dashboard userId={"662d27c91e4d04f831c2bdd7"} />
+        <Dashboard userId={userId} isAdmin={isAdmin}/>
       )}
       {view === "about" && <About setView={setView} />}
     </div>
