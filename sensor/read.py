@@ -2,23 +2,49 @@ import time
 import board
 import adafruit_dht
 import requests
+import inquirer
 #Initial the dht device, with data pin connected to:
 dhtDevice = adafruit_dht.DHT11(board.D17)
+
+baseUrl = "https://f293-2610-130-112-601-bb8f-a655-1145-9a85.ngrok-free.app"
 
 # ask for email and password input
 email = input("Enter your email: ")
 password = input("Enter your password: ")
 
 # make a post request to /login 
-loginResp = requests.post("http://localhost/login", data={'email' : email, 'password' : password})
+loginResp = requests.post(baseUrl + "/login", json={'email' : email, 'password' : password})
+
+#print(loginResp)
 
 # check if the status code is 200
 if loginResp.status_code != 200:
     print("Login failed")
     exit()
+print("Logged in successfully")
+
 # Extract user id from loginResp
 user_id = loginResp.json()['id']
-print(user_id)
+#print(user_id)
+
+#get Users plants
+plantResp = requests.get(baseUrl + "/user/" + user_id + "/plants")
+#plants = plantResp.json()['plants']
+if plantResp.status_code == 200:
+    plants = plantResp.json()['plants']
+    plant_names = [plant['name'] for plant in plants]
+
+    questions = [
+        inquirer.List('plant',
+                      message="Which plant do you want to select?",
+                      choices=plant_names,
+                      ),
+    ]
+
+    answers = inquirer.prompt(questions)
+    print(answers['plant'])
+else:
+    print("Failed to fetch plants")
 
 data = []
 
