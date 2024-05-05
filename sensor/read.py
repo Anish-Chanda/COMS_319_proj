@@ -1,8 +1,24 @@
 import time
 import board
 import adafruit_dht
+import requests
 #Initial the dht device, with data pin connected to:
 dhtDevice = adafruit_dht.DHT11(board.D17)
+
+# ask for email and password input
+email = input("Enter your email: ")
+password = input("Enter your password: ")
+
+# make a post request to /login 
+loginResp = requests.post("http://localhost/login", data={'email' : email, 'password' : password})
+
+# check if the status code is 200
+if loginResp.status_code != 200:
+    print("Login failed")
+    exit()
+# Extract user id from loginResp
+user_id = loginResp.json()['id']
+print(user_id)
 
 data = []
 
