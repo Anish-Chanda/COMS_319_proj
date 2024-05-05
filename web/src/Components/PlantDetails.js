@@ -18,42 +18,59 @@ function PlantDetails({ selectedPlant }) {
   useEffect(() => {
     console.log("Using effect..." + typeof selectedPlant);
     if (selectedPlant) {
-      console.log("making requets in use effect...");
+      console.log("making requests in useEffect...");
       fetch(`http://localhost:8080/plant/${selectedPlant._id}/telemetry`)
         .then((response) => response.json())
         .then((data) => {
-          let maxTemp = Math.min;
-          let MaxHumidity = Math.min;
-          let minHumidity = Math.max;
-          let minTemp = Math.max;
-          const tempData = data.telemetryData.filter((d) => {
-            if (d >= maxTemp) {
-              console.log("found new max temp at" + d);
-              maxTemp = d;
-            }
-            if (d <= minTemp) {
-              console.log("found new min temp at" + d);
-              minTemp = d;
-            }
-            return d.date.type === "Temp";
-          });
-          const humidityData = data.telemetryData.filter((d) => {
-            if (d >= MaxHumidity) MaxHumidity = d;
-            if (d <= minHumidity) {
-              console.log("found new min hum at" + d);
-              minHumidity = d;
-            }
-            return d.date.type === "Humidity";
-          });
-
-          if (minHumidity < 40 || maxTemp >= 15) {
-            setMsg("It's too hot in here 🥵");
+          if (!data || !data.telemetryData || data.telemetryData.length === 0) {
+            // Handle case where telemetry data is null or empty
+            setTempData(null);
+            setHumidityData(null);
+            setMsg("Telemetry data not available");
+            return;
           }
-          setTempData(tempData);
-          setHumidityData(humidityData);
+  
+          let maxTemp = Number.MIN_SAFE_INTEGER;
+          let minTemp = Number.MAX_SAFE_INTEGER;
+          let maxHumidity = Number.MIN_SAFE_INTEGER;
+          let minHumidity = Number.MAX_SAFE_INTEGER;
+  
+          const tempData = [];
+          const humidityData = [];
+  
+          data.telemetryData.forEach((d) => {
+            if (d.date.type === "Temp") {
+              tempData.push(d);
+              maxTemp = Math.max(maxTemp, d.averageValue);
+              minTemp = Math.min(minTemp, d.averageValue);
+            } else if (d.date.type === "Humidity") {
+              humidityData.push(d);
+              maxHumidity = Math.max(maxHumidity, d.averageValue);
+              minHumidity = Math.min(minHumidity, d.averageValue);
+            }
+          });
+  
+          if (minHumidity < 40 && maxTemp >= 15) {
+            setMsg("It's too hot, water me please");
+          } else if(maxHumidity >90 && minTemp < -4 ){
+            setMsg("It's too humid and cold, place me somewhere warm");
+          }
+            else {
+            setMsg("Conditions are normal");
+          }
+  
+          setTempData(tempData.length > 0 ? tempData : null);
+          setHumidityData(humidityData.length > 0 ? humidityData : null);
+        })
+        .catch((error) => {
+          console.error("Error fetching telemetry data:", error);
+          setTempData(null);
+          setHumidityData(null);
+          setMsg("Error fetching telemetry data");
         });
     }
   }, [selectedPlant]);
+  
 
   if (!selectedPlant) {
     return <div>Please select a plant</div>;
@@ -130,14 +147,15 @@ function PlantDetails({ selectedPlant }) {
           </LineChart>
         </div>
       </div>
-      <div
-        className={`flex-1 p-4 rounded-lg ${
-          msg === "" ? "bg-green-300" : "bg-red-300"
-        } shadow`}
-      >
-        <p>{msg === "" ? "I am Doing Perfectly Fine 😎" : msg}</p>
-      </div>
+      {/* Somewhere in your JSX, you can display the msg */}
+    <div
+      className={`flex-1 p-4 rounded-lg ${
+        msg === "Conditions are normal" ? "bg-green-300" : "bg-red-300"
+      } shadow`}
+    >
+      <p>{msg}</p>
     </div>
+      </div>
   );
 }
 

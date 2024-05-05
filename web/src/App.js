@@ -5,7 +5,7 @@ import Dashboard from "./Components/Dashboard";
 import About from "./Components/AboutPage";
 
 function App() {
-  const [view, setView] = useState("");
+  const [view, setView] = useState("dashboard");
 
   return (
     <div
