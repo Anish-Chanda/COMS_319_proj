@@ -13,6 +13,7 @@ import {
 function PlantDetails({ selectedPlant }) {
   const [tempData, setTempData] = useState([]);
   const [humidityData, setHumidityData] = useState([]);
+  const [msg, setMsg] = useState("");
 
   useEffect(() => {
     console.log("Using effect..." + typeof selectedPlant);
@@ -21,12 +22,33 @@ function PlantDetails({ selectedPlant }) {
       fetch(`http://localhost:8080/plant/${selectedPlant._id}/telemetry`)
         .then((response) => response.json())
         .then((data) => {
-          const tempData = data.telemetryData.filter(
-            (d) => d.date.type === "Temp"
-          );
-          const humidityData = data.telemetryData.filter(
-            (d) => d.date.type === "Humidity"
-          );
+          let maxTemp = Math.min;
+          let MaxHumidity = Math.min;
+          let minHumidity = Math.max;
+          let minTemp = Math.max;
+          const tempData = data.telemetryData.filter((d) => {
+            if (d >= maxTemp) {
+              console.log("found new max temp at" + d);
+              maxTemp = d;
+            }
+            if (d <= minTemp) {
+              console.log("found new min temp at" + d);
+              minTemp = d;
+            }
+            return d.date.type === "Temp";
+          });
+          const humidityData = data.telemetryData.filter((d) => {
+            if (d >= MaxHumidity) MaxHumidity = d;
+            if (d <= minHumidity) {
+              console.log("found new min hum at" + d);
+              minHumidity = d;
+            }
+            return d.date.type === "Humidity";
+          });
+
+          if (minHumidity < 40 || maxTemp >= 15) {
+            setMsg("It's too hot in here 🥵");
+          }
           setTempData(tempData);
           setHumidityData(humidityData);
         });
@@ -107,6 +129,13 @@ function PlantDetails({ selectedPlant }) {
             <Tooltip />
           </LineChart>
         </div>
+      </div>
+      <div
+        className={`flex-1 p-4 rounded-lg ${
+          msg === "" ? "bg-green-300" : "bg-red-300"
+        } shadow`}
+      >
+        <p>{msg === "" ? "I am Doing Perfectly Fine 😎" : msg}</p>
       </div>
     </div>
   );

@@ -48,11 +48,12 @@ export default function Dashboard({ userId }) {
       name: event.target.name.value,
       scientific_name: event.target.scientific_name.value,
       type: event.target.type.value,
+      soil_mix: event.target.soil_mix.value,
+      flowers: event.target.flowers.value,
+      fruits: event.target.fruits.value,
+      zone: event.target.zone.value,
       sunlight: event.target.sunlight.value,
-      water: event.target.water.value,
-      soil: event.target.soil.value,
-      fertilizer: event.target.fertilizer.value,
-      pot_size: event.target.pot_size.value,
+      img: event.target.img.value,
     };
     addToAllPlants(newPlant);
     setIsAddingNewPlant(false);
@@ -357,15 +358,18 @@ export default function Dashboard({ userId }) {
                         placeholder="Scientific Name"
                       />
                       <input name="type" required placeholder="Type" />
-                      <input name="sunlight" required placeholder="Sunlight" />
-                      <input name="water" required placeholder="Water" />
-                      <input name="soil" required placeholder="Soil" />
+
+                      {/* <input name="water" required placeholder="Water" /> */}
+                      <input name="soil_mix" required placeholder="soil_mix" />
+                      <input name="flowers" required placeholder="flowers" />
                       <input
-                        name="fertilizer"
+                        name="fruits"
                         required
-                        placeholder="Fertilizer"
+                        placeholder="fruits (edible?)"
                       />
-                      <input name="pot_size" required placeholder="Pot Size" />
+                      <input name="zone" required placeholder="zone" />
+                      <input name="sunlight" required placeholder="sunlight" />
+                      <input name="img" required placeholder="image url" />
                       <button type="submit">Submit</button>
                     </form>
                   )}
