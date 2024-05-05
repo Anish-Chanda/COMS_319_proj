@@ -6,7 +6,7 @@ import inquirer
 import json
 import os
 #Initial the dht device, with data pin connected to:
-#dhtDevice = adafruit_dht.DHT11(board.D17)
+dhtDevice = adafruit_dht.DHT11(board.D17)
 
 baseUrl = "https://f293-2610-130-112-601-bb8f-a655-1145-9a85.ngrok-free.app"
 
