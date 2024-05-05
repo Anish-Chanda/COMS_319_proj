@@ -32,7 +32,8 @@ plantResp = requests.get(baseUrl + "/user/" + user_id + "/plants")
 #plants = plantResp.json()['plants']
 if plantResp.status_code == 200:
     plants = plantResp.json()['plants']
-    plant_names = [plant['name'] for plant in plants]
+    plant_names_ids = {plant['name']: plant['_id'] for plant in plants}
+    plant_names = list(plant_names_ids.keys())
 
     questions = [
         inquirer.List('plant',
@@ -42,7 +43,9 @@ if plantResp.status_code == 200:
     ]
 
     answers = inquirer.prompt(questions)
-    print(answers['plant'])
+    selected_plant_name = answers['plant']
+    selected_plant_id = plant_names_ids[selected_plant_name]
+    print(selected_plant_name, selected_plant_id)
 else:
     print("Failed to fetch plants")
 
@@ -70,5 +73,14 @@ print("Average temp is: ", avg_temp)
 print("Average humidity is: ", avg_hum)
 
 #add to database
-
+temp_data = {
+    "user_id" : user_id,
+    "data" : {
+        "type": "Temp",
+        "value" : avg_temp,
+        "unit" : "C"
+    },
+    "plant_id": selected_plant_id
+}
+temp_Resp = requests.post(baseUrl + "/track", json=temp_data)
 
