@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FaPencilAlt, FaSave, FaTrash } from "react-icons/fa";
 import axios from "axios";
 
-function PlantCard({ plant, onPlantUpdate, handleDelete }) {
+function PlantCard({ plant, onPlantUpdate, handleDelete, isAdmin }) {
   const [isEditing, setIsEditing] = useState(false);
   const [editedPlant, setEditedPlant] = useState(plant);
 
@@ -128,21 +128,25 @@ function PlantCard({ plant, onPlantUpdate, handleDelete }) {
           className="w-24 h-24 object-cover rounded-lg"
         />
       </div>
-      <button
-        onClick={isEditing ? handleSaveClick : handleEditClick}
-        className="ml-4"
-      >
-        {isEditing ? <FaSave /> : <FaPencilAlt />}
-      </button>
-      <button
-        onClick={() => {
-          handleDelete(plant._id);
-        }}
-        className="ml-4"
-      >
-        <FaTrash />{" "}
-        {/* Assuming you've imported FaTrash from 'react-icons/fa' */}
-      </button>
+      {isAdmin && (
+        <button
+          onClick={isEditing ? handleSaveClick : handleEditClick}
+          className="ml-4"
+        >
+          {isEditing ? <FaSave /> : <FaPencilAlt />}
+        </button>
+      )}
+      {isAdmin && (
+        <button
+          onClick={() => {
+            handleDelete(plant._id);
+          }}
+          className="ml-4"
+        >
+          <FaTrash />
+          {/* Assuming you've imported FaTrash from 'react-icons/fa' */}
+        </button>
+      )}
     </div>
   );
 }

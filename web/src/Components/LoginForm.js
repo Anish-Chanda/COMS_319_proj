@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 
-export default function LoginForm({ setView }) {
+export default function LoginForm({ setView , setUserId, setIsAdmin}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -16,6 +16,9 @@ export default function LoginForm({ setView }) {
       });
 
       if (response.status === 200) {
+        //get user if and isAdmin val
+        setUserId(response.data['id'])
+        setIsAdmin(response.data['isAdmin'])
         setView("dashboard");
       } else {
         setError("Invalid login credentials");
