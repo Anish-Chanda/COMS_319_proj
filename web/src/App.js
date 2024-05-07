@@ -5,6 +5,7 @@ import Dashboard from "./Components/Dashboard";
 import About from "./Components/AboutPage";
 
 function App() {
+
   const [view, setView] = useState("");
   const [userId, setUserId] = useState("");
   const [isAdmin, setIsAdmin] = useState(false);
