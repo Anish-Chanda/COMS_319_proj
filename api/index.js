@@ -97,7 +97,7 @@ app.post("/track", async (req, res) => {
     const coll = dbClient.db("SoilSentry").collection("Telemetry");
     const doc = {
       user_id: new ObjectId(data.user_id),
-      date: new Date().toISOString(),
+      date: new Date(),
       plant_id: new ObjectId(data.plant_id),
       data: {
         type: data.data.type,
