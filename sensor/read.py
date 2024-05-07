@@ -97,4 +97,20 @@ temp_data = {
     "plant_id": selected_plant_id
 }
 temp_Resp = requests.post(baseUrl + "/track", json=temp_data)
+if temp_Resp.status_code == 200:
+    print("Temperature Tracked successfully")
+
+humidity_data = {
+    "user_id" : user_id,
+    "data" : {
+        "type" : "Humidity",
+        "value": avg_hum,
+        "unit": "%"
+    },
+    "plant_id": selected_plant_id
+}
+
+hum_resp = requests.post(baseUrl + "/track", json=humidity_data)
+if hum_resp.status_code == 200:
+    print("Humidity Tracked successfully")
 
